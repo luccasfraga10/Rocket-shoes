@@ -27,8 +27,8 @@ const Home = () => {
     getProducts();
   }, []);
 
-  const handleAddProduct = product => {
-    dispatch(CartActions.AddToCart(product));
+  const handleAddProduct = id => {
+    dispatch(CartActions.AddToCartRequest(id));
   };
 
   const amountProduct = useSelector(state =>
@@ -46,7 +46,7 @@ const Home = () => {
           <strong>{product.title}</strong>
           <span>{product.priceFormatted}</span>
 
-          <button type="button" onClick={() => handleAddProduct(product)}>
+          <button type="button" onClick={() => handleAddProduct(product.id)}>
             <div>
               <MdAddShoppingCart size={16} color="#FFF" />{' '}
               {amountProduct[product.id] || 0}
